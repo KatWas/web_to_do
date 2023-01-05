@@ -1,13 +1,16 @@
 {
-    "name": "web_to_do",
-    "version": "1.0.0",
-    "description": "simle chat comunicator",
-    "main": "index.js",
-    "author": "katwas",
-    "license": "MIT",
-    "scripts": {
-      "build": "babel src -d lib",
-      "test": "jest",
-      "start": "app.js"
-    }
+  "name": "web_to_do",
+  "version": "1.0.0",
+  "description": "simle chat comunicator",
+  "main": "index.js",
+  "author": "katwas",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "jest",
+    "start": "app.js"
+  },
+  "dependencies": {
+    "socket.io": "2.2.0"
   }
+}

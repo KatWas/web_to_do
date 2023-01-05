@@ -1,10 +1,13 @@
-const socket = io();
+const socket = io({
+    autoConnect: false
+  });
 
 //sockets
 
 socket.on('message', ({ author, content }) => addMessage(author, content));
 socket.on('newUser', ({ author, content }) => addMessage(author, content));
 socket.on('exitUser', ({ author, content }) => addMessage(author, content));
+socket.emit('message', { author: 'John Doe', content: 'Lorem Ipsum' });
 
 //select
 
@@ -31,34 +34,35 @@ const login = (e) => {
     }
 };
 
-const sendMessage = (e) => {
+function sendMessage(e) {
     e.preventDefault();
-    let isMessage = messageContentInput.value;
-
-    if (isMessage.length) {
-        addMessage(userName, isMessage);
-        socket.emit('message', { author: userName, content: messageContentInput.value })
-        messageContentInput.value = '';
-    } else {
-        return alert('The message file is empty')
+  
+    let messageContent = messageContentInput.value;
+  
+    if(!messageContent.length) {
+      alert('You have to type something!');
     }
-};
+    else {
+      addMessage(userName, messageContent);
+      socket.emit('message', { author: userName, content: messageContent })
+      messageContentInput.value = '';
+    }
+  
+  }
 
-const addMessage = (author, content) => {
+  function addMessage(author, content) {
     const message = document.createElement('li');
     message.classList.add('message');
     message.classList.add('message--received');
-    if (author === userName) {
-        message.classList.add('message--self')
-    } else if (author === 'Chat-Boot') {
-        message.classList.add('boot')
-    }
-    message.innerHTML +=
-        `<h3 class="message__author">${author === userName ? 'You' : author}</h3>
-        <div class="message__content"> ${content} </div>`
-
-    messagesList.appendChild(message)
-};
+    if(author === userName) message.classList.add('message--self');
+    message.innerHTML = `
+      <h3 class="message__author">${userName === author ? 'You' : author }</h3>
+      <div class="message__content">
+        ${content}
+      </div>
+    `;
+    messagesList.appendChild(message);
+  }
 
 loginForm.addEventListener('submit', (e) => { login(e) });
 addMessageForm.addEventListener('submit', (e) => { sendMessage(e) });
