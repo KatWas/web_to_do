@@ -23,6 +23,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('message', (message) => {
+    console.log('Oh, I\'ve got something from ' + socket.id);
     messeges.push(message);
     socket.broadcast.emit('message', message);
   });
