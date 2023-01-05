@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Chat App</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main id="app">
 
@@ -18,12 +20,12 @@
     <!-- WELCOME FORM -->
     <form id="welcome-form" class="welcome-form show">
       <h2>Log in</h2>
-      <input class="text-input" type="text" id="username" placeholder="Type your name here">
+      <input autoComplete='off' class="text-input" type="text" id="username" placeholder="Type your name here">
       <button class="btn" type="submit">Join</button>
     </form>
 
     <!-- MESSAGES SECTION -->
-    <section class="messages-section show" id="messages-section">
+    <section class="messages-section" id="messages-section">
       <h2>Messages</h2>
 
       <!-- messages list -->
@@ -35,11 +37,11 @@
           </div>
         </li>
         <li class="message message--self">
-            <h3 class="message__author">You</h3>
-            <div class="message__content">
-              Hi!
-            </div>
-          </li>
+          <h3 class="message__author">You</h3>
+          <div class="message__content">
+            Hi!
+          </div>
+        </li>
         <li class="message message--self message--received">
           <h3 class="message__author">You</h3>
           <div class="message__content">
@@ -50,13 +52,16 @@
 
       <!-- messages form -->
       <form id="add-messages-form">
-        <input class="text-input" type="text" placeholder="Type your message here" id="message-content">
+        <input autoComplete='off' class="text-input" type="text" placeholder="Type your message here"
+          id="message-content">
         <button class="btn" type="submit">Send</button>
       </form>
 
     </section>
 
   </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
   <script src="app.js" type="module"></script>
 </body>
+
 </html>

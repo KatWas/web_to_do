@@ -1,20 +1,13 @@
 {
     "name": "web_to_do",
     "version": "1.0.0",
+    "description": "simle chat comunicator",
     "main": "index.js",
-    "author": "KatWas <kwasilewska2014@gmail.com>",
+    "author": "katwas",
     "license": "MIT",
-    "dependencies": {
-        "cors": "^2.8.5",
-        "express": "^4.18.2",
-        "express-handlebars": "3.1.0",
-        "react": "^18.2.0",
-        "redux": "^4.2.0",
-        "router": "^1.3.7",
-        "shortid": "^2.2.16",
-        "socket.io": "^4.5.4"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.20"
+    "scripts": {
+      "build": "babel src -d lib",
+      "test": "jest",
+      "start": "app.js"
     }
-}
+  }
